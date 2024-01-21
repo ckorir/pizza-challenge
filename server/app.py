@@ -32,8 +32,8 @@ def get_restaurant_by_id(restaurant_id):
     if request.method == 'GET':
         if restaurant:
             pizzas_data = [
-                {'id': pizza.id, 'name': pizza.name, 'ingredients': pizza.ingredients}
-                for pizza in restaurant.pizzas
+                {'id': rp.pizza.id, 'name': rp.pizza.name, 'ingredients': rp.pizza.ingredients}
+                for rp in restaurant.pizzas
             ]
             restaurant_data = {
                 'id': restaurant.id,

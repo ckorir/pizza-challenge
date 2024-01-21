@@ -24,7 +24,7 @@ class Pizza(db.Model):
     name = db.Column(db.String)
     ingredients = db.Column(db.String, nullable=False)
 
-    restaurant = db.relationship('RestaurantPizza', back_populates='pizza')
+    restaurants = db.relationship('RestaurantPizza', back_populates='pizza')
     
 class RestaurantPizza(db.Model):
     __tablename__ = 'restaurant_pizza'
@@ -34,8 +34,8 @@ class RestaurantPizza(db.Model):
     restaurant_id = db.Column(db.Integer, db.ForeignKey('restaurants.id'), nullable=False)
     pizza_id = db.Column(db.Integer, db.ForeignKey('pizzas.id'), nullable=False)
 
-    restaurant = db.relationship('Restaurant', back_populates='restaurants')
-    pizza = db.relationship('Pizza', back_populates='pizzas')
+    restaurant = db.relationship('Restaurant', back_populates='pizzas')
+    pizza = db.relationship('Pizza', back_populates='restaurants')
 
     @validates('price')
     def validate_strength(self, key, value):
