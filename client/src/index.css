@@ -12,9 +12,22 @@ code {
     monospace;
 }
 
+.App-image{
+  display: flex;
+  align-items: center;
+  margin: auto;
+  height: 13em;
+}
+
+.App-logo{
+  height: 3em;
+  margin: 0 2em;
+}
+
 .title{
   text-align: center;
 }
+
 .alllist{
   margin: 1em;
   line-height: 3em;

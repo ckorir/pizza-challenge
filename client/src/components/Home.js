@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import image from '../img/pizza2.png'
 
 const RestaurantListItem = ({ restaurant }) => (
   <li key={restaurant.id}>
@@ -22,6 +23,7 @@ const Home = () => {
 
   return (
     <div>
+      <img src={image} className="App-image" alt="logo" />
       <h2 class="title">All Restaurants</h2>
       <ul class="alllist">
         {restaurants.map(restaurant => (
