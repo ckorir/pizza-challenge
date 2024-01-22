@@ -1,10 +1,11 @@
 // RestaurantDetail.js
 
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 
 const RestaurantDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate(); // Use useNavigate instead of useHistory
   const [restaurant, setRestaurant] = useState(null);
   const [pizzas, setPizzas] = useState([]);
   const [formData, setFormData] = useState({
@@ -51,6 +52,23 @@ const RestaurantDetail = () => {
       .catch(error => console.error('Error adding pizza:', error));
   };
 
+  const handleDeleteRestaurant = () => {
+    if (window.confirm("Are you sure you want to delete this restaurant?")) {
+      fetch(`/restaurants/${id}`, { method: 'DELETE' })
+        .then(response => {
+          if (response.ok) {
+            // Handle successful deletion, e.g., redirect to home page
+            console.log('Restaurant deleted successfully');
+            navigate('/');  // Redirect to home page after deletion using useNavigate
+          } else {
+            // Handle error response
+            console.error('Failed to delete restaurant');
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+  };
+
   return (
     <div>
       {restaurant ? (
@@ -90,10 +108,14 @@ const RestaurantDetail = () => {
             <br />
             <button type="submit">Add Pizza</button>
           </form>
+
+          {/* Button to delete the restaurant */}
+          <button onClick={handleDeleteRestaurant}>Delete Restaurant</button>
         </div>
       ) : (
         <p>Loading...</p>
       )}
+      <Link to="/">Back to Home</Link>
     </div>
   );
 };
