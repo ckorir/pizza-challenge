@@ -47,7 +47,18 @@ const RestaurantDetail = () => {
       .then(response => response.json())
       .then(data => {
         console.log('Pizza added successfully:', data);
-        // You might want to update the local state here to reflect the new pizza
+
+        // Update the local state with the new pizza data
+        setRestaurant(prevRestaurant => ({
+          ...prevRestaurant,
+          pizzas: [...prevRestaurant.pizzas, data],
+        }));
+
+        // Clear the form data
+        setFormData({
+          price: '',
+          pizza_id: '',
+        });
       })
       .catch(error => console.error('Error adding pizza:', error));
   };
@@ -57,7 +68,7 @@ const RestaurantDetail = () => {
       fetch(`/restaurants/${id}`, { method: 'DELETE' })
         .then(response => {
           if (response.ok) {
-            // Handle successful deletion, e.g., redirect to home page
+            // Handle successful deletion
             console.log('Restaurant deleted successfully');
             navigate('/');  // Redirect to home page after deletion using useNavigate
           } else {
