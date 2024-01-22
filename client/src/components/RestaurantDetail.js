@@ -5,7 +5,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 
 const RestaurantDetail = () => {
   const { id } = useParams();
-  const navigate = useNavigate(); // Use useNavigate instead of useHistory
+  const navigate = useNavigate();
   const [restaurant, setRestaurant] = useState(null);
   const [pizzas, setPizzas] = useState([]);
   const [formData, setFormData] = useState({
@@ -73,27 +73,27 @@ const RestaurantDetail = () => {
     <div>
       {restaurant ? (
         <div>
-          <h2>{restaurant.name}</h2>
-          <h3>Pizzas in {restaurant.name}</h3>
-          <ul>
+          <h2 class = "title">{restaurant.name}</h2>
+          <h3 class ="p-4 mx-4">Pizzas in {restaurant.name}</h3>
+          <ul class ="alllist mt-0 pt-0">
             {restaurant.pizzas.map(pizza => (
               <li key={pizza.id}>{pizza.name} - {pizza.ingredients}</li>
             ))}
           </ul>
-          <h3>Add Pizza to {restaurant.name}</h3>
-          <form onSubmit={handleFormSubmit}>
+          <h3 class ="p-4 pt-0 mx-4" >Add Pizza to {restaurant.name}</h3>
+          <form onSubmit={handleFormSubmit} class="addform">
             <label>
-              Price:
               <input
                 type="number"
                 name="price"
                 value={formData.price}
+                placeholder='Price:'
                 onChange={(e) => setFormData({ ...formData, price: e.target.value })}
               />
             </label>
             <br />
             <label>
-              Select Pizza:
+              
               <select
                 name="pizza_id"
                 value={formData.pizza_id}
@@ -106,16 +106,16 @@ const RestaurantDetail = () => {
               </select>
             </label>
             <br />
-            <button type="submit">Add Pizza</button>
+            <button type="submit" class="buttons">Add Pizza</button>
           </form>
 
           {/* Button to delete the restaurant */}
-          <button onClick={handleDeleteRestaurant}>Delete Restaurant</button>
+          <button onClick={handleDeleteRestaurant} class="buttons delete">Delete Restaurant</button>
         </div>
       ) : (
         <p>Loading...</p>
       )}
-      <Link to="/">Back to Home</Link>
+      <Link to="/" class="home">Back to Home</Link>
     </div>
   );
 };
