@@ -22,8 +22,8 @@ const Home = () => {
 
   return (
     <div>
-      <h2>All Restaurants</h2>
-      <ul>
+      <h2 class="title">All Restaurants</h2>
+      <ul class="alllist">
         {restaurants.map(restaurant => (
           <RestaurantListItem key={restaurant.id} restaurant={restaurant} />
         ))}

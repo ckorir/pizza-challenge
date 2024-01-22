@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 const PizzaForm = () => {
   const [formData, setFormData] = useState({
     price: '',
@@ -66,7 +67,7 @@ const PizzaForm = () => {
           />
         </label>
         <br />
-        <button type="submit">Add Pizza</button>
+        <button type="submit" className="btn btn-primary">Add Pizza</button>
       </form>
     </div>
   );

@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.title{
+  text-align: center;
+}
+.alllist{
+  margin: 1em;
+  line-height: 3em;
+  list-style: none;
+  padding: 3em;
+  padding-top: 1.2em;
+  color: black;
+  
+}
+
+.alllist li{
+  /* background-color: rgb(185, 185, 185); */
+  border-bottom: solid 1px black;
+  text-decoration: none;
+  list-style: none;
+  color: black;
+  padding: 1em;
+}

@@ -11,8 +11,8 @@ const RestaurantList = () => {
 
   return (
     <div>
-      <h2>Restaurant List</h2>
-      <ul>
+      <h2 class="title">Restaurant List</h2>
+      <ul class="alllist">
         {restaurants.map(restaurant => (
           <li key={restaurant.id}>
             <strong>{restaurant.name}</strong> - {restaurant.address}
