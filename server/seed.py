@@ -24,9 +24,15 @@ def seed():
         db.session.commit()
 
         # Seed Pizzas
-        pizzas = [
-            Pizza(name=fake.word(), ingredients=", ".join(fake.words())) for _ in range(5)
+        pizzas_data = [
+            {"name": "Mozzarella", "ingredients": "Tomato Sauce, Buffalo mozzarella"},
+            {"name": "Marinara", "ingredients": "Tomato Sauce, Buffalo mozzarella"},
+            {"name": "Hawaiian", "ingredients": "Tomato sauce, Cheese, Pineapple, Ham"},
+            {"name": "Mexican Style", "ingredients": "Tomato sauce, Enchilada sauce, Black beans, Mexican cheese"},
+            {"name": "Tropical", "ingredients": "Tomato sauce, Cheese, Pineapple, Cherry, Raisins, Plum"},
         ]
+
+        pizzas = [Pizza(name=pizza["name"], ingredients=pizza["ingredients"]) for pizza in pizzas_data]
         db.session.add_all(pizzas)
         db.session.commit()
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const RestaurantList = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -6,13 +6,12 @@ const RestaurantList = () => {
   useEffect(() => {
     fetch('/restaurants')
       .then(response => response.json())
-      .then(data => setRestaurants(data))
-      .catch(error => console.error('Error fetching restaurants:', error));
+      .then(data => setRestaurants(data));
   }, []);
 
   return (
     <div>
-      <h2>Restaurants</h2>
+      <h2>Restaurant List</h2>
       <ul>
         {restaurants.map(restaurant => (
           <li key={restaurant.id}>

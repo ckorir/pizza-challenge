@@ -38,7 +38,7 @@ class RestaurantPizza(db.Model):
     pizza = db.relationship('Pizza', back_populates='restaurants')
 
     @validates('price')
-    def validate_strength(self, key, value):
+    def validate_price(self, key, value):
         if not (1 < value < 30):
             raise ValueError("Must have a `price` between 1 and 30")
         return value

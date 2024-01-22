@@ -1,23 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const PizzaList = ({ restaurantId }) => {
+const PizzaList = () => {
   const [pizzas, setPizzas] = useState([]);
 
   useEffect(() => {
-    if (restaurantId) {
-      fetch(`/restaurants/${restaurantId}`)
-        .then(response => response.json())
-        .then(data => setPizzas(data.pizzas))
-        .catch(error => console.error(`Error fetching pizzas for restaurant ${restaurantId}:`, error));
-    }
-  }, [restaurantId]);
+    fetch('/pizzas')
+      .then(response => response.json())
+      .then(data => setPizzas(data));
+  }, []);
 
   return (
     <div>
+      <h2>Pizza List</h2>
       <ul>
         {pizzas.map(pizza => (
           <li key={pizza.id}>
-            
             <strong>{pizza.name}</strong> - {pizza.ingredients}
           </li>
         ))}
